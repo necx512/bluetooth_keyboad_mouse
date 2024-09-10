@@ -7,6 +7,7 @@ import keymap
 import bluetooth
 import dbus.service
 import dbus.mainloop.glib
+import random
 from dbus.mainloop.glib import DBusGMainLoop
 
 
@@ -49,8 +50,8 @@ class BluetoothBluezProfile(dbus.service.Object):
 # advertize a SDP record using our bluez profile class
 #
 class BTDevice:
-    BT_ADDRESS = "B8:27:EB:CC:39:46"  # use hciconfig to check
-    BT_DEV_NAME = "Real_Keyboard"
+    BT_ADDRESS = "C8:DB:26:FE:32:54"  # use hciconfig to check
+    BT_DEV_NAME = "Logitech pointer"
 
     # define some constants
     P_CTRL = 17  # Service port - must match port configured in SDP record
@@ -203,6 +204,9 @@ def register_agent():
 
 
 def main():
+    timerandom = random.randint(2,60)
+    xrandom = random.randint(10,100)
+    yrandom = random.randint(10,100)
     if not os.geteuid() == 0:
         sys.exit("Only root can run this script")
     print("restart bluetooth")
@@ -216,8 +220,11 @@ def main():
     device.listen()
     print("init success")
     while True:
-        time.sleep(120) # do random between 2 and 60
-        device.send_mouse(0, [10, 30, 1])
+        timerandom = random.randint(2,60)
+        xrandom = random.randint(10,100)
+        yrandom = random.randint(10,100)
+        time.sleep(timerandom) # do random between 2 and 60
+        device.send_mouse(0, [xrandom, yrandom, 1])
         #v = input("input str>>>")
         #if v == 'q':
         #    break
