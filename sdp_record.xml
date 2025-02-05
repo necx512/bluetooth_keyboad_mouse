@@ -65,24 +65,6 @@
 	<attribute id="0x0102">
 		<text value="Raspberry Pi 3" />
 	</attribute>
-	<attribute id="0x0200">
-		<uint16 value="0x0100" />
-	</attribute>
-	<attribute id="0x0201">
-		<uint16 value="0x0111" />
-	</attribute>
-	<attribute id="0x0202">
-		<uint8 value="0x40" />
-	</attribute>
-	<attribute id="0x0203">
-		<uint8 value="0x00" />
-	</attribute>
-	<attribute id="0x0204">
-		<boolean value="false" />
-	</attribute>
-	<attribute id="0x0205">
-		<boolean value="false" />
-	</attribute>
 	<attribute id="0x0206">
 		<sequence>
 			<sequence>
