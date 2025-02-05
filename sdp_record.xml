@@ -56,15 +56,6 @@
 			</sequence>
 		</sequence>
 	</attribute>
-	<attribute id="0x0100">
-		<text value="Bluetooth_Keyboard/Mouse" />
-	</attribute>
-	<attribute id="0x0101">
-		<text value="USB > BT Keyboard/Mouse" />
-	</attribute>
-	<attribute id="0x0102">
-		<text value="Raspberry Pi 3" />
-	</attribute>
 	<attribute id="0x0206">
 		<sequence>
 			<sequence>
