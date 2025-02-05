@@ -35,14 +35,6 @@
 			<uint16 value="0x0100" /> <!-- base_offset -->
 		</sequence>
 	</attribute>
-	<attribute id="0x0009"> <!-- Bluetooth Profile Descriptor List -->
-		<sequence>
-			<sequence>
-				<uuid value="0x1124" /> <!-- Human Interface Device -->
-				<uint16 value="0x0100" /> <!-- L2CAP -->
-			</sequence>
-		</sequence>
-	</attribute>
 	<attribute id="0x0206">
 		<sequence>
 			<sequence>
