@@ -1,11 +1,15 @@
-# bluetooth_keyboad_mouse
+# old README.md
 
 - sudo hciconfig hci0 up
 - sudo hcitool cmd 0x3f 0x001  0x54 0x32 0xfe 0x26 0xdb 0xc8
 - sudo hciconfig hci0 down
 - sudo hciconfig hci0 up
 
+Ne pas oublier de supprimer tout device avec bluetoothctl ou par GUI
+J'ai testé le client sous windows. Un client bluetoothctl semble pas marcher
 
+
+# configuration
 Dans /etc/bluetooth/main.config:
 Name = BlueZseb
 Class = 0x05C0
@@ -14,8 +18,6 @@ PairableTimeout = 0
 
 
 
-Ne pas oublier de supprimer tout device avec bluetoothctl ou par GUI
-J'ai testé le client sous windows. Un client bluetoothctl semble pas marcher
 [Unit]
 Description=Bluetooth service
 Documentation=man:bluetoothd(8)
@@ -75,13 +77,25 @@ hci0:	Type: Primary  Bus: UART
 	LMP Version: 4.1 (0x7)  Subversion: 0x2209
 	Manufacturer: Broadcom Corporation (15)
 
+
+# Lancement
+systemctl start bluetooth # pour appliquer la config qu'on a faite dans main.conf
+systemctl stop bluetooth # parce qu'on va lancer notre daemon minimal
+/usr/libexec/bluetooth/bluetoothd -p time # on lance notre daemon
+hciconfig hci0 up # because 'systemctl stop bluetooth' a arreter l'interface
+
+La command hciconfig doit faire aparaitre `UP RUNNING PSCAN ISCAN`, 'Name: 'BlueZseb' et 'Class: 0x0005c0'
+
+
+
 # Quelques commandes utiles
 sudo hciconfig hci0 up
 sudo hciconfig hci0 class 0x05C0
 sudo hciconfig hci0 name
 sudo hciconfig hci0 piscan
 sudo /usr/libexec/bluetooth/bluetoothd
-
+sudo hciconfig -a
+busctl
 
 # remarques
 Si les services dbus ET bluetooth doivent etre redemarrer, alors redemarrer dbus en premier.
