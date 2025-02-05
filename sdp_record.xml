@@ -16,7 +16,6 @@
 		<sequence>
 			<sequence>
 				<uuid value="0x0100" /> <!-- L2CAP -->
-				<uint16 value="0x0011" /> <!-- HIDP -->
 			</sequence>
 		</sequence>
 	</attribute>
