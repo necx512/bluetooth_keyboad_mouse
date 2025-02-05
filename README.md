@@ -75,4 +75,13 @@ hci0:	Type: Primary  Bus: UART
 	LMP Version: 4.1 (0x7)  Subversion: 0x2209
 	Manufacturer: Broadcom Corporation (15)
 
+# Quelques commandes utiles
+sudo hciconfig hci0 up
+sudo hciconfig hci0 class 0x05C0
+sudo hciconfig hci0 name
+sudo hciconfig hci0 piscan
+sudo /usr/libexec/bluetooth/bluetoothd
 
+
+# remarques
+Si les services dbus ET bluetooth doivent etre redemarrer, alors redemarrer dbus en premier.

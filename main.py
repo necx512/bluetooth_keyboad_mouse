@@ -69,13 +69,6 @@ class BTDevice:
     # configure the bluetooth hardware device
     def init_bt_device(self):
 
-        print("Configuring for name " + BTDevice.BT_DEV_NAME)
-        os.system("hciconfig hci0 up")
-        os.system("sudo hciconfig hci0 class 0x05C0")  # General Discoverable Mode
-        os.system("sudo hciconfig hci0 name " + BTDevice.BT_DEV_NAME)
-
-        # make the device discoverable
-        os.system("sudo hciconfig hci0 piscan")
 
         register_agent()
 
@@ -210,11 +203,6 @@ def main():
     if not os.geteuid() == 0:
         sys.exit("Only root can run this script")
     print("restart bluetooth")
-    #os.system("sudo service bluetoothd stop")
-    os.system("sudo systemctl restart dbus")
-    os.system("sudo /usr/libexec/bluetooth/bluetoothd -p time&")
-    os.system("sudo hciconfig hci0 down")
-    os.system("sudo hciconfig hci0 up")
     DBusGMainLoop(set_as_default=True)
     device = BTDevice()
     device.listen()
