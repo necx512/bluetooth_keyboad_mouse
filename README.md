@@ -103,3 +103,15 @@ Si les services dbus ET bluetooth doivent etre redemarrer, alors redemarrer dbus
 # Troubleshooting  for already used
 sudo lsof -nP | grep -i bluetooth
 sudo lsof -nP | grep -i l2cap
+
+# Requirements
+sudo apt install python3-bluez
+sudo apt install build-essential
+sudo apt install cmake
+sudo apt install python3-dev
+sudo apt install libdbus-1-dev
+sudo apt install libdbus-glib-1-dev
+
+pip3 install pybluez
+pip3 install git+https://github.com/pybluez/pybluez.git#egg=pybluez
+pip3 install dbus-python

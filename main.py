@@ -8,6 +8,7 @@ import bluetooth
 import dbus.service
 import dbus.mainloop.glib
 import random
+import uuid
 from dbus.mainloop.glib import DBusGMainLoop
 
 
@@ -50,15 +51,17 @@ class BluetoothBluezProfile(dbus.service.Object):
 # advertize a SDP record using our bluez profile class
 #
 class BTDevice:
-    BT_ADDRESS = "C8:DB:26:FE:32:54"  # use hciconfig to check
-    BT_DEV_NAME = "Logitech pointer"
+    #BT_ADDRESS = "C8:DB:26:FE:32:54"
+    BT_ADDRESS = bluetooth.read_local_bdaddr()[0]
+    BT_DEV_NAME = "Logitech"
 
     # define some constants
     P_CTRL = 17  # Service port - must match port configured in SDP record
     P_INTR = 19  # Service port - must match port configured in SDP record #Interrrupt port
     PROFILE_DBUS_PATH = "/bluez/hzy/hidbluetooth_profile"  # dbus path of the bluez profile we will create
     SDP_RECORD_PATH = "sdp_record.xml"  # file path of the sdp record to load
-    UUID = "00001124-0000-1000-8000-00805f9b34fb"
+    #UUID = "00001124-0000-1000-8000-00805f9b34fb"
+    UUID = str(uuid.uuid4())
 
     def __init__(self):
 
@@ -92,6 +95,12 @@ class BTDevice:
 
         profile = BluetoothBluezProfile(bus, self.PROFILE_DBUS_PATH)
 
+        try:
+            manager.UnregisterProfile(self.PROFILE_DBUS_PATH)
+            print("Profile removed")
+        except:
+            print("No profile exist")
+
         manager.RegisterProfile(self.PROFILE_DBUS_PATH, self.UUID, opts)
 
         print("Profile registered ")
@@ -123,8 +132,8 @@ class BTDevice:
         # bind these sockets to a port - port zero to select next available
         self.scontrol.bind((self.BT_ADDRESS, self.P_CTRL))
         self.sinterrupt.bind((self.BT_ADDRESS, self.P_INTR))
-        print("listen...")
         # Start listening on the server sockets
+        print("listen...")
         self.scontrol.listen(1)  # Limit of 1 connection
         self.sinterrupt.listen(1)
         print("ready to accept...")
@@ -197,6 +206,8 @@ def register_agent():
 
 
 def main():
+
+
     timerandom = random.randint(2,60)
     xrandom = random.randint(10,100)
     yrandom = random.randint(10,100)
