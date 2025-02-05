@@ -21,7 +21,7 @@ pip3 install dbus-python
 
 
 
-In /etc/bluetooth/main.config, set the following variables:
+In /etc/bluetooth/main.conf, set the following variables:
 ```
 Name = BlueZseb
 Class = 0x05C0
@@ -31,23 +31,25 @@ PairableTimeout = 0
 
 Ensure that the file `/lib/systemd/system/bluetooth.service` contains the following line:
 
-`ExecStart=/usr/libexec/bluetooth/bluetoothd --noplugin=sap,vcp,mcp,bap,hostname,hid`
+`ExecStart=/usr/libexec/bluetooth/bluetoothd --plugin=time`
 
-(Note: I'm not sure it is required to set hid in the previous line)
+Setting time plugin prevent other plugin to run. For instance, the plugin 'hostname' give the name of the machine to the name of the bluetooth device and we don't want it.
+Another exemple is the use of some L2CAP ports that we want by some plugins.
+Perhaps we can replace 'time' by a random string?
 
 Then execute:
 `
 systemctl daemon-reload
-systemctl disable bluetooth
-systemctl stop bluetooth
+systemctl enable bluetooth
+systemctl restart bluetooth
+hciconfig hci0 up
 `
 
 
 # Lancement
+With bluetoothctl, make sure that there is no device. if there is, remove it by command `remove`
+
 ```
-sudo systemctl start bluetooth # pour appliquer la config qu'on a faite dans main.conf
-sudo systemctl stop bluetooth # parce qu'on va lancer notre daemon minimal
-sudo /usr/libexec/bluetooth/bluetoothd -p time # on lance notre daemon
 sudo hciconfig hci0 up # because 'systemctl stop bluetooth' a arreter l'interface
 ```
 
