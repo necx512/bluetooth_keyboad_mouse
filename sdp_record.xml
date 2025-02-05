@@ -43,19 +43,6 @@
 			</sequence>
 		</sequence>
 	</attribute>
-	<attribute id="0x000d"> <!-- Additional Protocol Descriptor Lists -->
-		<sequence>
-			<sequence>
-				<sequence>
-					<uuid value="0x0100" /> <!-- L2CAP -->
-					<uint16 value="0x0013" />
-				</sequence>
-				<sequence>
-					<uuid value="0x0011" /> <!-- HIDP -->
-				</sequence>
-			</sequence>
-		</sequence>
-	</attribute>
 	<attribute id="0x0206">
 		<sequence>
 			<sequence>
