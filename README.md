@@ -85,3 +85,7 @@ sudo /usr/libexec/bluetooth/bluetoothd
 
 # remarques
 Si les services dbus ET bluetooth doivent etre redemarrer, alors redemarrer dbus en premier.
+
+# Troubleshooting  for already used
+sudo lsof -nP | grep -i bluetooth
+sudo lsof -nP | grep -i l2cap
