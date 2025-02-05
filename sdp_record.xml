@@ -99,22 +99,4 @@
 			</sequence>
 		</sequence>
 	</attribute>
-	<attribute id="0x020b">
-		<uint16 value="0x0100" />
-	</attribute>
-	<attribute id="0x020c">
-		<uint16 value="0x0c80" />
-	</attribute>
-	<attribute id="0x020d">
-		<boolean value="true" />
-	</attribute>
-	<attribute id="0x020e">
-		<boolean value="false" />
-	</attribute>
-	<attribute id="0x020f">
-		<uint16 value="0x0640" />
-	</attribute>
-	<attribute id="0x0210">
-		<uint16 value="0x0320" />
-	</attribute>
 </record>
