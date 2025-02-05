@@ -28,13 +28,6 @@
 			<uuid value="0x1002" />
 		</sequence>
 	</attribute>
-	<attribute id="0x0006"> <!-- Language Based Attribute ID List -->
-		<sequence>
-			<uint16 value="0x656e" /> <!-- code_ISO639 -->
-			<uint16 value="0x006a" /> <!-- encoding -->
-			<uint16 value="0x0100" /> <!-- base_offset -->
-		</sequence>
-	</attribute>
 	<attribute id="0x0206">
 		<sequence>
 			<sequence>
