@@ -1,0 +1,38 @@
+Short item of size 1. Global type. Usage Page tag. Value :  5 1 
+Short item of size 1. Local type. Usage tag. Value :  9 2 
+Short item of size 1. Main type. Collection tag. Value :  a1 1 
+	Short item of size 1. Global type. Report ID tag. Value :  85 2 
+	Short item of size 1. Local type. Usage tag. Value :  9 1 
+	Short item of size 1. Main type. Collection tag. Value :  a1 0
+ 
+	Short item of size 1. Global type. Usage Page tag. Value :  5 9 
+		Short item of size 1. Local type. Usage Minimum tag. Value :  19 1 
+		Short item of size 1. Local type. Usage Maximum tag. Value :  29 3 
+		Short item of size 1. Global type. Logical Minimum tag. Value :  15 0 
+		Short item of size 1. Global type. Logical Maximum tag. Value :  25 1 
+		    Short item of size 1. Global type. Report Size tag. Value :  75 1 
+		    Short item of size 1. Global type. Report Count tag. Value :  95 3 
+		    Short item of size 1. Main type. Input tag. Value :  81 2 
+		    
+                    Short item of size 1. Global type. Report Size tag. Value :  75 5 
+		    Short item of size 1. Global type. Report Count tag. Value :  95 1 
+		    Short item of size 1. Main type. Input tag. Value :  81 1
+ 
+	Short item of size 1. Global type. Usage Page tag. Value :  5 1 
+		Short item of size 1. Local type. Usage tag. Value :  9 30 
+		Short item of size 1. Local type. Usage tag. Value :  9 31 
+		Short item of size 1. Local type. Usage tag. Value :  9 38 
+		Short item of size 1. Global type. Logical Minimum tag. Value :  15 81 
+		Short item of size 1. Global type. Logical Maximum tag. Value :  25 7f 
+		    Short item of size 1. Global type. Report Size tag. Value :  75 8 
+		    Short item of size 1. Global type. Report Count tag. Value :  95 3 
+		    Short item of size 1. Main type. Input tag. Value :  81 6
+
+
+
+
+
+
+ 
+	Short item of size 0. Main type. End Collection tag. 
+Short item of size 0. Main type. End Collection tag. 
