@@ -97,25 +97,22 @@ Ne pas oublier de supprimer tout device avec bluetoothctl ou par GUI
 J'ai testé le client sous windows. Un client bluetoothctl semble pas marcher
 
 
-
-===
-seb@logitech:~/bluetooth_keyboad_mouse $ sudo hciconfig -a
+seb@logitech:~/bluetooth_keyboad_mouse $ sudo hciconfig hci0 -a
 hci0:	Type: Primary  Bus: UART
 	BD Address: C8:DB:26:FE:32:54  ACL MTU: 1021:8  SCO MTU: 64:1
 	UP RUNNING PSCAN ISCAN 
-	RX bytes:21910 acl:98 sco:0 events:867 errors:0
-	TX bytes:47557 acl:92 sco:0 commands:776 errors:0
+	RX bytes:22484 acl:98 sco:0 events:875 errors:0
+	TX bytes:47595 acl:92 sco:0 commands:784 errors:0
 	Features: 0xbf 0xfe 0xcf 0xfe 0xdb 0xff 0x7b 0x87
 	Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
 	Link policy: RSWITCH SNIFF 
 	Link mode: PERIPHERAL ACCEPT 
 	Name: 'Logitech'
-	Class: 0x6005c0
-	Service Classes: Audio, Telephony
+	Class: 0x0005c0
+	Service Classes: Unspecified
 	Device Class: Peripheral, Combo keyboard/pointing device
 	HCI Version: 4.1 (0x7)  Revision: 0x1fc
 	LMP Version: 4.1 (0x7)  Subversion: 0x2209
 	Manufacturer: Broadcom Corporation (15)
-
 ===
 Ne pas oublier de lire les log : systemctl status bluetooth
