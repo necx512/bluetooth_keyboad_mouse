@@ -51,17 +51,18 @@ class BluetoothBluezProfile(dbus.service.Object):
 # advertize a SDP record using our bluez profile class
 #
 class BTDevice:
-    #BT_ADDRESS = "C8:DB:26:FE:32:54"
-    BT_ADDRESS = bluetooth.read_local_bdaddr()[0]
+    BT_ADDRESS = "C8:DB:26:FE:32:54"
+    #BT_ADDRESS = bluetooth.read_local_bdaddr()[0]
+
     BT_DEV_NAME = "Logitech"
 
     # define some constants
     P_CTRL = 17  # Service port - must match port configured in SDP record
     P_INTR = 19  # Service port - must match port configured in SDP record #Interrrupt port
     PROFILE_DBUS_PATH = "/bluez/hzy/hidbluetooth_profile"  # dbus path of the bluez profile we will create
-    SDP_RECORD_PATH = "sdp_record.xml"  # file path of the sdp record to load
-    #UUID = "00001124-0000-1000-8000-00805f9b34fb"
-    UUID = str(uuid.uuid4())
+    SDP_RECORD_PATH = "/home/seb/bluetooth_keyboad_mouse/sdp_recordv1.xml"  # file path of the sdp record to load
+    UUID = "00001124-0000-1000-8000-00805f9b34fb"
+    #UUID = str(uuid.uuid4())
 
     def __init__(self):
 

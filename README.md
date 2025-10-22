@@ -3,18 +3,15 @@
 Install the following package:
 
 ```
-sudo apt install python3-bluez
-sudo apt install build-essential
-sudo apt install cmake
-sudo apt install python3-dev
-sudo apt install libdbus-1-dev
-sudo apt install libdbus-glib-1-dev
+sudo apt install python3-bluez build-essential cmake python3-dev libdbus-1-dev libdbus-glib-1-dev libbluetooth-dev
 ```
 
 In a venv:
 
 ```
-pip3 install pybluez
+python3 -m venv venv
+source venv/bin/activate
+pip3 install pybluez # not required?
 pip3 install git+https://github.com/pybluez/pybluez.git#egg=pybluez
 pip3 install dbus-python
 ```
@@ -23,7 +20,7 @@ pip3 install dbus-python
 
 In /etc/bluetooth/main.conf, set the following variables:
 ```
-Name = BlueZseb
+Name = Logitech
 Class = 0x05C0
 DiscoverableTimeout = 0
 PairableTimeout = 0
@@ -45,9 +42,13 @@ systemctl restart bluetooth
 hciconfig hci0 up
 `
 
+If you get the error "Can't init device hci0: Operation not possible due to RF-kill (132)":
+1. rfkill list
+2. sudo rfkill unblock bluetooth
+
 
 # Lancement
-With bluetoothctl, make sure that there is no device. if there is, remove it by command `remove`
+With bluetoothctl and the command 'paired-devices', make sure that there is no device. if there is, remove it by command `remove`
 
 ```
 sudo hciconfig hci0 up # because 'systemctl stop bluetooth' a arreter l'interface
@@ -94,3 +95,27 @@ sudo lsof -nP | grep -i l2cap
 
 Ne pas oublier de supprimer tout device avec bluetoothctl ou par GUI
 J'ai testé le client sous windows. Un client bluetoothctl semble pas marcher
+
+
+
+===
+seb@logitech:~/bluetooth_keyboad_mouse $ sudo hciconfig -a
+hci0:	Type: Primary  Bus: UART
+	BD Address: C8:DB:26:FE:32:54  ACL MTU: 1021:8  SCO MTU: 64:1
+	UP RUNNING PSCAN ISCAN 
+	RX bytes:21910 acl:98 sco:0 events:867 errors:0
+	TX bytes:47557 acl:92 sco:0 commands:776 errors:0
+	Features: 0xbf 0xfe 0xcf 0xfe 0xdb 0xff 0x7b 0x87
+	Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+	Link policy: RSWITCH SNIFF 
+	Link mode: PERIPHERAL ACCEPT 
+	Name: 'Logitech'
+	Class: 0x6005c0
+	Service Classes: Audio, Telephony
+	Device Class: Peripheral, Combo keyboard/pointing device
+	HCI Version: 4.1 (0x7)  Revision: 0x1fc
+	LMP Version: 4.1 (0x7)  Subversion: 0x2209
+	Manufacturer: Broadcom Corporation (15)
+
+===
+Ne pas oublier de lire les log : systemctl status bluetooth
