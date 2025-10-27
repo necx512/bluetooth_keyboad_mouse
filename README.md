@@ -116,3 +116,8 @@ hci0:	Type: Primary  Bus: UART
 	Manufacturer: Broadcom Corporation (15)
 ===
 Ne pas oublier de lire les log : systemctl status bluetooth
+
+
+Penser à verifier dans bluetoothctl, avec la command 'list', que l'addr mac du controller est la meme que celle donnée par sudo hciconfig hci0 -a.
+Si non: sudo systemctl restart bluetooth
+be sure that list-agents cmd gives no output

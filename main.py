@@ -204,6 +204,10 @@ def register_agent():
 
     print("Agent registered and set as default")
 
+def is_enabled():
+    with open("enable.txt","r") as f:
+        enabled = f.read()
+    return ("1" in enabled)
 
 
 def main():
@@ -224,7 +228,8 @@ def main():
         xrandom = random.randint(10,100)
         yrandom = random.randint(10,100)
         time.sleep(timerandom) # do random between 2 and 60
-        device.send_mouse(0, [xrandom, yrandom, 1])
+        if(is_enabled()):
+            device.send_mouse(0, [xrandom, yrandom, 1])
         #v = input("input str>>>")
         #if v == 'q':
         #    break
